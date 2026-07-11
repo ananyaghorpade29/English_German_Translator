@@ -7,10 +7,13 @@ streamlit	Creates a web interface
 import streamlit as st
 from transformers import MarianMTModel, MarianTokenizer
 
-model_name = "Helsinki-NLP/opus-mt-en-de"
-tokenizer = MarianTokenizer.from_pretrained(model_name)
-model = MarianMTModel.from_pretrained(model_name)
-
+@st.cache_resource
+def load_model():
+    model_name = "Helsinki-NLP/opus-mt-en-de"
+    tokenizer = MarianTokenizer.from_pretrained(model_name)
+    model = MarianMTModel.from_pretrained(model_name)
+    return tokenizer, model
+tokenizer,model = load_model()
 
 def translate(text):
     inputs= tokenizer(
