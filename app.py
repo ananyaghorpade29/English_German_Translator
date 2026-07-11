@@ -14,19 +14,21 @@ def load_model():
     model = MarianMTModel.from_pretrained(model_name)
     return tokenizer, model
 tokenizer,model = load_model()
+print(model.config._name_or_path)
 
 def translate(text):
     inputs= tokenizer(
         text,
         return_tensors="pt",
-        padding= True
+        padding= True,
+        truncation=True
     )
     translated= model.generate(**inputs)
 
-    output = tokenizer.decode(
-        translated[0],
+    output = tokenizer.batch_decode(
+        translate,
         skip_special_tokens = True
-    )
+    )[0]
     print(output)
     return output
 
