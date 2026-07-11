@@ -34,5 +34,6 @@ st.title("English to German Translator")
 text= st.text_area("Enter English text")
 
 if st.button("Translate"):
-    result = translate(text)
+    with st.spinner("Translating.."):
+        result = translate(text)
     st.success(result)
