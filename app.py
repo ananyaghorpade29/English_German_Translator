@@ -15,6 +15,7 @@ def load_model():
     return tokenizer, model
 tokenizer,model = load_model()
 print(model.config._name_or_path)
+print(tokenizer.name_or_path)
 
 def translate(text):
     inputs= tokenizer(

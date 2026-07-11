@@ -3,3 +3,5 @@ transformers
 torch
 sentencepiece
 sacremoses
+streamlit==1.37.1
+transformers==4.39.3
