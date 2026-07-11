@@ -26,7 +26,7 @@ def translate(text):
     translated= model.generate(**inputs)
 
     output = tokenizer.batch_decode(
-        translate[0],
+        translated[0],
         skip_special_tokens = True
     )
     print(output)
